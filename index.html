@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auditoría Digital — Ca'n Pepito by Hedonistas</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --olive: #5c6b3a;
+      --olive-light: #8a9a5b;
+      --olive-bg: #f4f5ef;
+      --terra: #c1622f;
+      --terra-light: #e07a4a;
+      --dark: #1a1a1a;
+      --gray: #6b7280;
+      --gray-light: #f9fafb;
+      --border: #e5e7eb;
+      --red: #dc2626;
+      --orange: #ea580c;
+      --yellow: #ca8a04;
+      --green: #16a34a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* PORTADA */
+    .cover {
+      background: linear-gradient(135deg, #1a2010 0%, #2d3d1a 50%, #1a2010 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 30% 70%, rgba(193,98,47,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 30%, rgba(92,107,58,0.2) 0%, transparent 60%);
+    }
+
+    .cover-content { position: relative; z-index: 1; max-width: 700px; }
+
+    .cover-tag {
+      display: inline-block;
+      background: rgba(193,98,47,0.2);
+      border: 1px solid rgba(193,98,47,0.4);
+      color: var(--terra-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 40px;
+    }
+
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .cover h1 span { color: var(--terra-light); }
+
+    .cover-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 60px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cover-meta-item {
+      text-align: center;
+    }
+
+    .cover-meta-item .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+
+    .cover-meta-item .value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+
+    .cover-score-box {
+      margin: 48px auto 0;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px 48px;
+    }
+
+    .cover-score-box .score-num {
+      font-size: 72px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .cover-score-box .score-num span {
+      font-size: 32px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .cover-score-box .score-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* SECCIÓN */
+    .section {
+      padding: 72px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section-num {
+      width: 40px; height: 40px;
+      background: var(--olive);
+      color: #fff;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--dark);
+    }
+
+    /* RESUMEN EJECUTIVO */
+    .exec-summary {
+      background: var(--olive-bg);
+      border-left: 4px solid var(--olive);
+      padding: 24px 28px;
+      border-radius: 0 12px 12px 0;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 40px;
+    }
+
+    /* SCORECARD */
+    .scorecard {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .score-card {
+      background: var(--gray-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .score-card.red::after { background: var(--red); }
+    .score-card.orange::after { background: var(--orange); }
+    .score-card.yellow::after { background: var(--yellow); }
+    .score-card.green::after { background: var(--green); }
+
+    .score-card .area {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .score-card .nota {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .score-card.red .nota { color: var(--red); }
+    .score-card.orange .nota { color: var(--orange); }
+    .score-card.yellow .nota { color: var(--yellow); }
+    .score-card.green .nota { color: var(--green); }
+
+    .score-card .nota span { font-size: 16px; font-weight: 400; color: var(--gray); }
+
+    .score-card .estado {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* PROBLEMAS */
+    .problem-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .problem-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .problem-item.critico {
+      border-left: 4px solid var(--red);
+      background: #fef2f2;
+    }
+
+    .problem-item.medio {
+      border-left: 4px solid var(--orange);
+      background: #fff7ed;
+    }
+
+    .problem-item.bajo {
+      border-left: 4px solid var(--yellow);
+      background: #fefce8;
+    }
+
+    .problem-badge {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-top: 2px;
+    }
+
+    .critico .problem-badge { background: var(--red); color: #fff; }
+    .medio .problem-badge { background: var(--orange); color: #fff; }
+    .bajo .problem-badge { background: var(--yellow); color: #fff; }
+
+    .problem-content h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .problem-content p {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* TABLA */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    thead th {
+      background: var(--dark);
+      color: #fff;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    thead th:first-child { border-radius: 8px 0 0 0; }
+    thead th:last-child { border-radius: 0 8px 0 0; }
+
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:nth-child(even) { background: var(--gray-light); }
+
+    tbody td {
+      padding: 12px 16px;
+      color: #374151;
+      vertical-align: middle;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-green { background: #dcfce7; color: #16a34a; }
+    .badge-red { background: #fee2e2; color: #dc2626; }
+    .badge-orange { background: #ffedd5; color: #ea580c; }
+    .badge-yellow { background: #fef9c3; color: #ca8a04; }
+
+    /* REPUTACIÓN */
+    .rep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .rep-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .rep-card .platform {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+
+    .rep-card .score {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .rep-card .reviews {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 6px;
+    }
+
+    .rep-card .status {
+      margin-top: 12px;
+    }
+
+    /* EMBUDO */
+    .funnel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: 32px 0;
+    }
+
+    .funnel-step {
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+    }
+
+    .funnel-step .inner {
+      background: var(--olive);
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    }
+
+    .funnel-step:nth-child(2) { width: 88%; }
+    .funnel-step:nth-child(3) { width: 76%; }
+    .funnel-step:nth-child(4) { width: 64%; }
+    .funnel-step:nth-child(4) .inner { background: var(--red); }
+
+    .funnel-step .inner .step-name { font-weight: 600; font-size: 14px; }
+    .funnel-step .inner .step-detail { font-size: 12px; opacity: 0.8; }
+
+    /* COMPETENCIA */
+    .comp-table-wrap {
+      overflow-x: auto;
+    }
+
+    /* PLAN DE ACCIÓN */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .plan-col {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .plan-col-header {
+      padding: 16px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .plan-col.urgente .plan-col-header { background: var(--red); }
+    .plan-col.corto .plan-col-header { background: var(--orange); }
+    .plan-col.medio .plan-col-header { background: var(--olive); }
+
+    .plan-col-sub {
+      padding: 4px 20px 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.8);
+      background: inherit;
+    }
+
+    .plan-col.urgente .plan-col-sub { background: var(--red); }
+    .plan-col.corto .plan-col-sub { background: var(--orange); }
+    .plan-col.medio .plan-col-sub { background: var(--olive); }
+
+    .plan-items {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plan-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    .plan-item .icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    .urgente .plan-item .icon { background: var(--red); }
+    .corto .plan-item .icon { background: var(--orange); }
+    .medio .plan-item .icon { background: var(--olive); }
+
+    /* HORARIOS */
+    .horario-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .horario-dia {
+      border-radius: 12px;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .horario-dia .dia { font-weight: 700; margin-bottom: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .horario-dia .hora { font-size: 11px; }
+
+    .horario-dia.cerrado { background: #fee2e2; color: var(--red); }
+    .horario-dia.limitado { background: #fff7ed; color: var(--orange); }
+    .horario-dia.ok { background: #f0fdf4; color: #16a34a; }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: linear-gradient(135deg, var(--olive-bg), #fff);
+      border: 1px solid #d1d9c0;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+
+    .highlight h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--olive);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .highlight p { font-size: 14px; color: #374151; line-height: 1.7; }
+
+    /* MARCA DOBLE */
+    .marca-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .marca-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .marca-card-header {
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--gray-light);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marca-card-body { padding: 16px 20px; }
+
+    .marca-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marca-row:last-child { border-bottom: none; }
+    .marca-row .label-m { color: var(--gray); }
+    .marca-row .val-m { font-weight: 600; }
+
+    /* PIE */
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 40px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer strong { color: rgba(255,255,255,0.8); }
+
+    /* PRINT */
+    @media print {
+      .cover { min-height: auto; padding: 80px 60px; }
+      .section { page-break-inside: avoid; }
+      .plan-grid { grid-template-columns: 1fr; }
+      .rep-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* INTRO BAR */
+    .intro-bar {
+      background: var(--dark);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .intro-bar strong { color: rgba(255,255,255,0.85); }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 28px 0 12px;
+    }
+
+    p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+
+    ul { padding-left: 20px; margin-bottom: 16px; }
+    ul li { font-size: 14px; color: #374151; margin-bottom: 6px; line-height: 1.6; }
+    ul li strong { color: var(--dark); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 20px 0;
+    }
+
+    .col-box {
+      background: var(--gray-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .col-box h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .col-box.positivo h4 { color: var(--green); }
+    .col-box.negativo h4 { color: var(--red); }
+
+    .col-box ul { margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="cover-tag">Auditoría de Negocio Digital</div>
+    <h1>Ca'n Pepito<br/><span>by Hedonistas</span></h1>
+    <p class="cover-sub">El Toro · Mallorca · hedonistasclub.com</p>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="label">Fecha</div>
+        <div class="value">Mayo 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Reseñas Google</div>
+        <div class="value">554 reseñas · 4.6★</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">TheFork</div>
+        <div class="value">9.6 / 10</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Precio medio</div>
+        <div class="value">~36 € / persona</div>
+      </div>
+    </div>
+
+    <div class="cover-score-box">
+      <div class="score-num">5.6<span>/10</span></div>
+      <div class="score-label">Puntuación global de presencia digital</div>
+    </div>
+  </div>
+</div>
+
+<!-- BARRA INFO -->
+<div class="intro-bar">
+  <span><strong>Ca'n Pepito by Hedonistas</strong> — Carrer Gran Vía 37, El Toro, Illes Balears</span>
+  <span>+34 971 78 10 96 · hedonistasclub.com</span>
+</div>
+
+<div class="container">
+
+  <!-- 0. RESUMEN EJECUTIVO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">0</div>
+      <h2 class="section-title">Resumen Ejecutivo</h2>
+    </div>
+
+    <div class="exec-summary">
+      Ca'n Pepito by Hedonistas tiene una base sólida: <strong>producto excelente, equipo apasionado y reseñas brillantes</strong>. El Google rating (4.6 con 554 opiniones) y el TheFork (9.6/10) demuestran que quien va, repite y recomienda. El problema es que <strong>eso no llega al turista que busca en TripAdvisor un restaurante en El Toro</strong> — solo 44 reseñas y sin aparecer en el top local. A esto se suman una doble identidad de marca que genera confusión, precios invisibles en la web, horarios de cenas que no encajan con el ritmo del turista mallorquín, y una página de eventos privados que devuelve error 404. El potencial está ahí. El trabajo digital, por hacer.
+    </div>
+
+    <!-- SCORECARD GLOBAL -->
+    <div class="scorecard">
+      <div class="score-card orange">
+        <div class="area">Web / UX</div>
+        <div class="nota">6<span>/10</span></div>
+        <div class="estado">Buena base, problemas de conversión</div>
+      </div>
+      <div class="score-card red">
+        <div class="area">Marca</div>
+        <div class="nota">5<span>/10</span></div>
+        <div class="estado">Doble identidad confusa</div>
+      </div>
+      <div class="score-card yellow">
+        <div class="area">Reseñas</div>
+        <div class="nota">7<span>/10</span></div>
+        <div class="estado">Google bien, TripAdvisor muy bajo</div>
+      </div>
+      <div class="score-card yellow">
+        <div class="area">Oferta y precios</div>
+        <div class="nota">7<span>/10</span></div>
+        <div class="estado">Buen producto, pricing invisible</div>
+      </div>
+      <div class="score-card red">
+        <div class="area">Redes sociales</div>
+        <div class="nota">5<span>/10</span></div>
+        <div class="estado">Dos cuentas, audiencia dividida</div>
+      </div>
+      <div class="score-card red">
+        <div class="area">Horarios</div>
+        <div class="nota">4<span>/10</span></div>
+        <div class="estado">No aptos para zona turística</div>
+      </div>
+      <div class="score-card red">
+        <div class="area">Embudo / Fidelización</div>
+        <div class="nota">5<span>/10</span></div>
+        <div class="estado">Sin retención de clientes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. WEB -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2 class="section-title">Web — hedonistasclub.com</h2>
+    </div>
+
+    <div class="two-col">
+      <div class="col-box positivo">
+        <h4>Lo que funciona</h4>
+        <ul>
+          <li>Diseño limpio y mediterráneo, coherente con el concepto</li>
+          <li>Sistema de reservas online integrado y funcional</li>
+          <li>3 idiomas (ES, EN, DE) — bien orientado al turista</li>
+          <li>CTAs claros: "Reservar ahora" en múltiples puntos</li>
+          <li>Rating de Google visible en la web (4.6 · 554 reseñas)</li>
+          <li>Múltiples métodos de pago aceptados (Visa, Amex, Apple Pay…)</li>
+        </ul>
+      </div>
+      <div class="col-box negativo">
+        <h4>Lo que falla</h4>
+        <ul>
+          <li>Precios no visibles — solo en PDF descargable</li>
+          <li>Eventos privados: error 404 (página no existe)</li>
+          <li>Instagram sin traducir en versión inglesa</li>
+          <li>Términos locales sin explicar (melosos, greixonera…)</li>
+          <li>Sin captación de emails ni newsletter</li>
+          <li>Sin FAQ ni información sobre alérgenos online</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="problem-list">
+      <div class="problem-item critico">
+        <span class="problem-badge">Crítico</span>
+        <div class="problem-content">
+          <h4>Precios invisibles en la web</h4>
+          <p>El menú completo está solo en PDF descargable. El precio medio (~36€/persona) no aparece en ningún punto visible. En 2026, el turista quiere ver precios antes de reservar. Si no los encuentra, se va a TripAdvisor o TheFork — y ahí puede elegir a la competencia.</p>
+        </div>
+      </div>
+      <div class="problem-item critico">
+        <span class="problem-badge">Crítico</span>
+        <div class="problem-content">
+          <h4>Eventos privados: error 404</h4>
+          <p>La sección /es/eventos-privados no carga. Cualquier persona interesada en contratar el restaurante para una celebración, boda o evento corporativo choca con un error. Esto es ingreso directo perdido sin que nadie pueda cuantificarlo.</p>
+        </div>
+      </div>
+      <div class="problem-item medio">
+        <span class="problem-badge">Medio</span>
+        <div class="problem-content">
+          <h4>Instagram sin traducir en versión inglesa</h4>
+          <p>El feed de Instagram integrado en la web inglesa muestra textos en español. Para un turista alemán, británico o escandinavo, esto rompe la experiencia y genera desconfianza.</p>
+        </div>
+      </div>
+      <div class="problem-item medio">
+        <span class="problem-badge">Medio</span>
+        <div class="problem-content">
+          <h4>Términos sin explicar para turistas internacionales</h4>
+          <p>"Melosos", "greixonera", "arrocería de autor" aparecen en la versión inglesa sin contexto ni explicación. El turista no sabe qué es y no pregunta — simplemente se va o elige otro restaurante.</p>
+        </div>
+      </div>
+      <div class="problem-item bajo">
+        <span class="problem-badge">Bajo</span>
+        <div class="problem-content">
+          <h4>Sin captación de leads</h4>
+          <p>No hay newsletter, formulario de suscripción ni ningún mecanismo para capturar el email del cliente. Para un restaurante con clientela estacional, una base de datos propia es un activo estratégico que no se está construyendo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MARCA -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2 class="section-title">Marca e Identidad — La doble identidad</h2>
+    </div>
+
+    <p>Este es uno de los problemas más graves, aunque menos obvios. El negocio opera con <strong>dos marcas en paralelo sin jerarquía clara</strong>, lo que genera confusión en el cliente y divide el esfuerzo de marketing.</p>
+
+    <div class="marca-grid">
+      <div class="marca-card">
+        <div class="marca-card-header">Hedonistas Club</div>
+        <div class="marca-card-body">
+          <div class="marca-row"><span class="label-m">Web</span><span class="val-m">hedonistasclub.com ✓</span></div>
+          <div class="marca-row"><span class="label-m">Instagram</span><span class="val-m">@hedonistasclub ✓</span></div>
+          <div class="marca-row"><span class="label-m">TripAdvisor</span><span class="val-m">— Sin perfil propio</span></div>
+          <div class="marca-row"><span class="label-m">TheFork</span><span class="val-m">— Sin perfil propio</span></div>
+          <div class="marca-row"><span class="label-m">Google</span><span class="val-m">— Sin perfil propio</span></div>
+        </div>
+      </div>
+      <div class="marca-card">
+        <div class="marca-card-header">Ca'n Pepito by Hedonistas</div>
+        <div class="marca-card-body">
+          <div class="marca-row"><span class="label-m">Web</span><span class="val-m">— Sin web propia</span></div>
+          <div class="marca-row"><span class="label-m">Instagram</span><span class="val-m">@canpepitobyhedonistas ✓</span></div>
+          <div class="marca-row"><span class="label-m">TripAdvisor</span><span class="val-m">Perfil activo (44 reseñas)</span></div>
+          <div class="marca-row"><span class="label-m">TheFork</span><span class="val-m">Perfil activo (9.6/10)</span></div>
+          <div class="marca-row"><span class="label-m">Google</span><span class="val-m">554 reseñas · 4.6★</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <h4>El problema en la práctica</h4>
+      <p>Un cliente que te descubre en Instagram como "Hedonistas Club" y luego busca "Can Pepito" puede no encontrarte, o viceversa. Dos cuentas de Instagram dividen tu audiencia y el esfuerzo de contenido. La web (hedonistasclub.com) no se llama igual que el restaurante físico. Cuando alguien quiere hacer una reserva en "Ca'n Pepito" y busca en Google, llega a una web con otra marca. Esto aumenta el abandono.</p>
+    </div>
+
+    <div class="problem-list">
+      <div class="problem-item critico">
+        <span class="problem-badge">Crítico</span>
+        <div class="problem-content">
+          <h4>Recomendación: unificar marca</h4>
+          <p>Si "Hedonistas Club" es una marca paraguas con otros proyectos futuros, mantener la estructura pero dejar claro en la web. Si no, unificar todo bajo "Ca'n Pepito by Hedonistas" y consolidar las dos cuentas de Instagram en una sola (@canpepitobyhedonistas, que es la más específica y la que tienen los perfiles de reseñas).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. REPUTACIÓN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2 class="section-title">Reputación y Reseñas</h2>
+    </div>
+
+    <div class="rep-grid">
+      <div class="rep-card">
+        <div class="platform">Google</div>
+        <div class="score">4.6★</div>
+        <div class="reviews">554 reseñas</div>
+        <div class="status"><span class="badge badge-green">Muy bien</span></div>
+      </div>
+      <div class="rep-card">
+        <div class="platform">TheFork</div>
+        <div class="score">9.6</div>
+        <div class="reviews">/ 10 puntos</div>
+        <div class="status"><span class="badge badge-green">Excelente</span></div>
+      </div>
+      <div class="rep-card">
+        <div class="platform">TripAdvisor</div>
+        <div class="score">4.7★</div>
+        <div class="reviews">Solo 44 reseñas</div>
+        <div class="status"><span class="badge badge-red">Problema grave</span></div>
+      </div>
+    </div>
+
+    <div class="problem-list">
+      <div class="problem-item critico">
+        <span class="problem-badge">Crítico</span>
+        <div class="problem-content">
+          <h4>TripAdvisor: casi inexistentes para zona turística</h4>
+          <p>Con solo 44 reseñas en TripAdvisor estáis en el puesto #186 de 806 restaurantes en Calviá. En el ranking local de El Toro, ni aparecéis entre los 10 primeros. Esto es devastador: TripAdvisor es la primera búsqueda del turista británico, alemán o escandinavo antes de decidir dónde comer. Tenéis 554 reseñas en Google pero habéis descuidado por completo TripAdvisor.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Temas recurrentes en reseñas positivas</h3>
+    <ul>
+      <li><strong>Croquetas:</strong> mencionadas como "las mejores" en múltiples reseñas</li>
+      <li><strong>Paella y arroces:</strong> el diferenciador principal del restaurante</li>
+      <li><strong>Cordero a baja temperatura:</strong> plato muy valorado</li>
+      <li><strong>Trato del personal</strong> (Carlos y Ferrán citados por nombre)</li>
+      <li><strong>Concepto "hidden gem":</strong> restaurante secreto que no defraud — activo de marketing sin explotar</li>
+      <li><strong>Nueva propiedad:</strong> múltiples reseñas destacan el cambio positivo desde la nueva dirección</li>
+    </ul>
+
+    <div class="highlight">
+      <h4>Oportunidad sin explotar</h4>
+      <p>El concepto "restaurante secreto" o "hidden gem" aparece de forma orgánica en varias reseñas. Es contenido viral en sí mismo. No se está usando en ningún canal de comunicación propio. Una campaña de Instagram o TikTok basada en este concepto podría generar alcance orgánico significativo.</p>
+    </div>
+  </div>
+
+  <!-- 4. OFERTA Y PRECIOS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2 class="section-title">Oferta y Precios</h2>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Elemento</th>
+          <th>Estado</th>
+          <th>Visibilidad online</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Precio medio por persona</td>
+          <td>~36 € (sin bebidas)</td>
+          <td><span class="badge badge-orange">Solo en TheFork</span></td>
+        </tr>
+        <tr>
+          <td>Carta de platos</td>
+          <td>Completa, bien estructurada</td>
+          <td><span class="badge badge-orange">Solo en PDF</span></td>
+        </tr>
+        <tr>
+          <td>Carta de vinos</td>
+          <td>Disponible</td>
+          <td><span class="badge badge-orange">Solo en PDF</span></td>
+        </tr>
+        <tr>
+          <td>Opciones vegetarianas</td>
+          <td>Sí</td>
+          <td><span class="badge badge-green">Visible en web</span></td>
+        </tr>
+        <tr>
+          <td>Sin gluten / Sin lactosa</td>
+          <td>Sí</td>
+          <td><span class="badge badge-green">Visible en web</span></td>
+        </tr>
+        <tr>
+          <td>Menú de eventos privados</td>
+          <td>Desconocido</td>
+          <td><span class="badge badge-red">Página en 404</span></td>
+        </tr>
+        <tr>
+          <td>Takeaway</td>
+          <td>Sí</td>
+          <td><span class="badge badge-yellow">Poco visible</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <h4>Productos estrella identificados</h4>
+      <p>Cecina de León certificada · Coquinas al vino blanco · Carpaccio de lubina Aquanaria · Croquetas (chipirón / jamón ibérico / trufa) · Pulpo braseado · Paletilla de cordero (baja temperatura) · Huevos con gamba roja · Arroces (seco, meloso, greixonera, fideuá) · Cheesecake de pistacho con base Oreo.</p>
+    </div>
+  </div>
+
+  <!-- 5. HORARIOS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2 class="section-title">Horarios — Problema estructural</h2>
+    </div>
+
+    <div class="horario-grid">
+      <div class="horario-dia cerrado">
+        <div class="dia">Lun</div>
+        <div class="hora">CERRADO</div>
+      </div>
+      <div class="horario-dia cerrado">
+        <div class="dia">Mar</div>
+        <div class="hora">CERRADO</div>
+      </div>
+      <div class="horario-dia limitado">
+        <div class="dia">Mié</div>
+        <div class="hora">13:00–21:00</div>
+      </div>
+      <div class="horario-dia limitado">
+        <div class="dia">Jue</div>
+        <div class="hora">13:00–21:00</div>
+      </div>
+      <div class="horario-dia ok">
+        <div class="dia">Vie</div>
+        <div class="hora">13:00–21:30</div>
+      </div>
+      <div class="horario-dia ok">
+        <div class="dia">Sáb</div>
+        <div class="hora">13:00–21:30</div>
+      </div>
+      <div class="horario-dia cerrado">
+        <div class="dia">Dom</div>
+        <div class="hora">13:00–15:30</div>
+      </div>
+    </div>
+
+    <div class="problem-list">
+      <div class="problem-item critico">
+        <span class="problem-badge">Crítico</span>
+        <div class="problem-content">
+          <h4>Horarios incompatibles con el turista de Mallorca</h4>
+          <p>Mallorca tiene temporada alta de mayo a octubre. Los turistas en la isla cenan entre las 21:00 y las 23:00. Cerrar a las 21:00–21:30 significa que la última mesa real se sienta a las 20:00–20:30. Estáis perdiendo toda la clientela turística de cenas en vuestra franja más rentable. El domingo cerrar a las 15:30 corta el servicio justo cuando hay más actividad familiar y turística.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. REDES SOCIALES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2 class="section-title">Redes Sociales</h2>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Plataforma</th>
+          <th>Cuenta</th>
+          <th>Estado</th>
+          <th>Observación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Instagram</td>
+          <td>@hedonistasclub</td>
+          <td><span class="badge badge-yellow">Activa</span></td>
+          <td>Marca paraguas — audiencia dividida</td>
+        </tr>
+        <tr>
+          <td>Instagram</td>
+          <td>@canpepitobyhedonistas</td>
+          <td><span class="badge badge-yellow">Activa</span></td>
+          <td>Cuenta del restaurante — esfuerzo dividido</td>
+        </tr>
+        <tr>
+          <td>TripAdvisor</td>
+          <td>Can Pepito By Hedonistas</td>
+          <td><span class="badge badge-red">Muy bajo</span></td>
+          <td>Solo 44 reseñas · #186 en Calviá</td>
+        </tr>
+        <tr>
+          <td>TheFork</td>
+          <td>Can Pepito By Hedonistas</td>
+          <td><span class="badge badge-green">Excelente</span></td>
+          <td>9.6/10 — bien gestionado</td>
+        </tr>
+        <tr>
+          <td>Google My Business</td>
+          <td>Ca'n Pepito / Bodega Can Pepito</td>
+          <td><span class="badge badge-green">Bien</span></td>
+          <td>554 reseñas · 4.6★ — hay que mantenerlo</td>
+        </tr>
+        <tr>
+          <td>TikTok</td>
+          <td>No identificado</td>
+          <td><span class="badge badge-orange">Sin presencia</span></td>
+          <td>Oportunidad no explotada para turistas jóvenes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <h4>Contenido de Instagram: bien enfocado, mal distribuido</h4>
+      <p>La estrategia de contenido visual (proceso de elaboración, ingredientes premium, técnicas especiales) está bien orientada. El problema es que ese esfuerzo se divide entre dos cuentas. Consolidando en una sola cuenta se duplicaría el alcance del mismo trabajo. Además, hay una oportunidad clara en Reels mostrando el proceso del arroz y los caldos — el tipo de contenido que se hace viral en el nicho gastronómico.</p>
+    </div>
+  </div>
+
+  <!-- 7. EMBUDO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2 class="section-title">Embudo de Ventas</h2>
+    </div>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="inner">
+          <span class="step-name">DESCUBRIMIENTO</span>
+          <span class="step-detail">Google · TripAdvisor · TheFork · Instagram</span>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="inner">
+          <span class="step-name">CONSIDERACIÓN</span>
+          <span class="step-detail">Web · Reseñas · Redes sociales</span>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="inner">
+          <span class="step-name">RESERVA</span>
+          <span class="step-detail">Reserva online · Teléfono · TheFork</span>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="inner">
+          <span class="step-name">FIDELIZACIÓN — ROTO</span>
+          <span class="step-detail">Sin newsletter · Sin CRM · Sin programa de fidelidad</span>
+        </div>
+      </div>
+    </div>
+
+    <p>El embudo funciona bien hasta la reserva. El problema está en la <strong>fidelización</strong>: no hay ningún mecanismo para capturar el email del cliente, comunicar novedades o traer de vuelta al cliente que ya visitó. Para un restaurante en zona turística con clientela estacional, construir una base de datos propia es estratégico.</p>
+  </div>
+
+  <!-- 8. COMPETENCIA -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2 class="section-title">Competencia Local</h2>
+    </div>
+
+    <div class="comp-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Restaurante</th>
+            <th>Especialidad</th>
+            <th>TripAdvisor</th>
+            <th>Posición en El Toro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bistro 49</strong></td>
+            <td>Variada</td>
+            <td>4.7★</td>
+            <td><span class="badge badge-red">#1 en El Toro</span></td>
+          </tr>
+          <tr>
+            <td><strong>La Terraza Port Adriano</strong></td>
+            <td>Mariscos · Paella</td>
+            <td>3.7★</td>
+            <td>Ubicación premium en puerto</td>
+          </tr>
+          <tr>
+            <td><strong>El Faro del Toro</strong></td>
+            <td>Pescado · Mariscos · Paella</td>
+            <td>N/D</td>
+            <td>Restaurante de marina</td>
+          </tr>
+          <tr>
+            <td><strong>Can Olivo</strong></td>
+            <td>Mediterránea · Mallorquina</td>
+            <td>N/D</td>
+            <td>Port Adriano</td>
+          </tr>
+          <tr>
+            <td><strong>Ca'n Pepito by Hedonistas</strong></td>
+            <td>Arrocería de autor · Mediterránea</td>
+            <td>4.7★ (44 reseñas)</td>
+            <td><span class="badge badge-red">Sin ranking local</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight">
+      <h4>Ventaja competitiva real (no comunicada)</h4>
+      <p>La especialización en arrocería de autor con arrocero propio (Pedro), caldos caseros y múltiples variantes del mismo plato (seco, meloso, greixonera, fideuá) es una diferenciación <strong>genuina y escasa en la zona</strong>. Ningún competidor directo la tiene. El problema es que esto no aparece claramente en TripAdvisor ni en Google porque hay pocas reseñas que lo destaquen. Más reseñas = más keywords = mejor posicionamiento = más clientes.</p>
+    </div>
+  </div>
+
+  <!-- 9. PLAN DE ACCIÓN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2 class="section-title">Plan de Acción</h2>
+    </div>
+
+    <div class="plan-grid">
+      <div class="plan-col urgente">
+        <div class="plan-col-header">Urgente</div>
+        <div class="plan-col-sub">Esta semana</div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <span class="icon">1</span>
+            <span><strong>Arreglar el 404 de eventos privados</strong> — ingreso perdido directo</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">2</span>
+            <span><strong>Campaña de reseñas en TripAdvisor</strong> — QR en mesa o mensaje post-visita dirigido específicamente a TripAdvisor (no Google donde ya hay 554)</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">3</span>
+            <span><strong>Publicar precios en la web</strong> — añadir precio medio y rangos por sección sin eliminar el PDF</span>
+          </div>
+        </div>
+      </div>
+      <div class="plan-col corto">
+        <div class="plan-col-header">Corto plazo</div>
+        <div class="plan-col-sub">Este mes</div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <span class="icon">4</span>
+            <span><strong>Unificar Instagram</strong> — decidir cuenta principal y consolidar audiencia</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">5</span>
+            <span><strong>Captación de emails</strong> — formulario "recibe nuestra carta de temporada" en web y reserva</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">6</span>
+            <span><strong>Ampliar horario de cenas</strong> — valorar hasta las 22:30 en viernes y sábado durante temporada alta</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">7</span>
+            <span><strong>Traducción completa</strong> de Instagram integrado en versión inglesa</span>
+          </div>
+        </div>
+      </div>
+      <div class="plan-col medio">
+        <div class="plan-col-header">Medio plazo</div>
+        <div class="plan-col-sub">Este trimestre</div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <span class="icon">8</span>
+            <span><strong>Activar narrativa "hidden gem"</strong> — Reels del proceso del arroz, el arrocero Pedro, los caldos propios</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">9</span>
+            <span><strong>Crear página de eventos privados</strong> funcional con capacidad, tipos y formulario</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">10</span>
+            <span><strong>Optimizar perfil TripAdvisor</strong> — fotos actualizadas, respuesta a todas las reseñas, categorías correctas</span>
+          </div>
+          <div class="plan-item">
+            <span class="icon">11</span>
+            <span><strong>Explorar TikTok</strong> para el segmento de turista joven en temporada alta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <p><strong>Auditoría Digital — Ca'n Pepito by Hedonistas</strong></p>
+  <p style="margin-top:8px">Carrer Gran Vía 37 · El Toro · Illes Balears · hedonistasclub.com · Mayo 2026</p>
+  <p style="margin-top:8px; font-size:11px; opacity:0.5">Informe elaborado a partir de datos públicos: web, TripAdvisor, TheFork, Google My Business y búsquedas en abierto.</p>
+</div>
+
+</body>
+</html>
